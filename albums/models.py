@@ -1,3 +1,8 @@
 from django.db import models
+from datetime import datetime
 
-# Create your models here.
+
+class Album(models.Model):
+    title = models.CharField(max_length=50, blank=False)
+    owner = models.CharField(max_length=50, blank=False)
+    date = models.DateTimeField(default=datetime.now, blank=True)
