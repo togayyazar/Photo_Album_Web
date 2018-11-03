@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     'rest_framework',
-    'snippets.apps.SnippetsConfig',
     'django.contrib.staticfiles',
     'albums'
 ]
