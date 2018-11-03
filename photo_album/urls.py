@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import include, path
-from albums.views import AlbumDestroyView, AlbumUpdateView, AlbumDetailsView,AlbumViewSet,PhotoViewSet
+from albums.views import AlbumViewSet,PhotoViewSet
 from rest_framework.routers import Route, DefaultRouter
 
 router = DefaultRouter(trailing_slash=False)
