@@ -27,7 +27,6 @@ router.register(r'photos',PhotoViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^api/', include(router.urls)),
 
 ]
 urlpatterns=urlpatterns+router.urls
