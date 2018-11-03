@@ -1,13 +1,17 @@
 from django.shortcuts import render
-from rest_framework.generics import DestroyAPIView, UpdateAPIView, RetrieveAPIView
 from rest_framework import viewsets
-from .models import Album, AlbumSerializer,Photo,PhotoSerializers
-# Create your views here.
+from django.views.decorators.csrf import csrf_exempt
+from .models import Album, AlbumSerializer, Photo, PhotoSerializers
+from django.http import HttpResponseRedirect
 
 
 class AlbumViewSet(viewsets.ModelViewSet):
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
+
+    def create(self, request, *args, **kwargs):
+        response = super(AlbumViewSet, self).create(request, *args, **kwargs)
+        return HttpResponseRedirect(redirect_to='/')
 
 
 class PhotoViewSet(viewsets.ModelViewSet):
@@ -15,6 +19,7 @@ class PhotoViewSet(viewsets.ModelViewSet):
     serializer_class = PhotoSerializers
 
 
+@csrf_exempt
 def index(request):
     return render(request, 'index.html')
 
