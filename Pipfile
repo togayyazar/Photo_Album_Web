@@ -16,7 +16,9 @@ python_version = "3.6"
 django-heroku = "*"
 gunicorn = "*"
 pillow = "*"
-rest_framework = "*"
+djangorestframework = "*"
+markdown = "*"
+django-filter = "*"
 
 [dev-packages]
 
