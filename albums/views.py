@@ -11,17 +11,3 @@ class AlbumViewSet(viewsets.ModelViewSet):
 class PhotoViewSet(viewsets.ModelViewSet):
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializers
-
-class AlbumDestroyView(DestroyAPIView):
-    queryset = Album.objects.all()
-    serializer_class = AlbumSerializer
-
-
-class AlbumUpdateView(UpdateAPIView):
-    queryset = Album.objects.all()
-    serializer_class = AlbumSerializer
-
-
-class AlbumDetailsView(RetrieveAPIView):
-    queryset = Album.objects.all()
-    serializer_class = AlbumSerializer
