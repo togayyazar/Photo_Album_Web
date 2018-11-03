@@ -7,3 +7,5 @@ Dependencies:
 `white-noise`
 
 `python3`
+
+`pip install pillow`
