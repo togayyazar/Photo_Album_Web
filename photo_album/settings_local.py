@@ -47,7 +47,11 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning',
     'DEFAULT_AUTHENTICATION_CLASSES':[],
-    'DEFAULT_PERMISSION_CLASSES':[]
+    'DEFAULT_PERMISSION_CLASSES':[],
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    )
 }
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
