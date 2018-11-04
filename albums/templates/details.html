@@ -29,7 +29,129 @@
 
   </head>
   <body>
-  	
+
+<div class="tabbable">
+
+                    <ul class="nav nav-tabs form-switcher">
+                      <li class="active">
+                        <a name="html-tab" href="#post-object-form" data-toggle="tab" aria-expanded="true">HTML form</a>
+                      </li>
+                      <li>
+                        <a name="raw-tab" href="#post-generic-content-form" data-toggle="tab">Raw data</a>
+                      </li>
+                    </ul>
+
+
+                  <div class="well tab-content">
+
+                      <div class="tab-pane active" id="post-object-form">
+
+                          <form action="/photos/" method="POST" enctype="multipart/form-data" class="form-horizontal" novalidate="">
+                            <fieldset>
+                              <input type="hidden" name="csrfmiddlewaretoken" value="65VXzrPANk1SpJM5xUrefdd4NS5XStFhOymKpEj1rRDpqGgC8OMnz6nkGaIM90mu">
+
+
+
+
+
+    <div class="form-group ">
+
+    <label class="col-sm-2 control-label ">
+      Photo
+    </label>
+
+
+  <div class="col-sm-10">
+    <input name="photo" type="file" value="">
+
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="form-group">
+
+    <label class="col-sm-2 control-label ">
+      Album
+    </label>
+
+
+  <div class="col-sm-10">
+    <select class="form-control" name="album">
+
+            <option value={{ album }} >Album {{ album }}</option>
+
+    </select>
+
+
+
+
+  </div>
+</div>
+
+
+
+
+                              <div class="form-actions">
+                                <button class="btn btn-primary" title="Make a POST request on the Photo List resource">POST</button>
+                              </div>
+                            </fieldset>
+                          </form>
+
+                      </div>
+
+
+                    <div class="tab-pane" id="post-generic-content-form">
+
+                        <form action="/photos/" method="POST" class="form-horizontal">
+                          <fieldset>
+
+
+
+  <div class="form-group">
+    <label for="id__content_type" class="col-sm-2 control-label">Media type:</label>
+    <div class="col-sm-10">
+      <select name="_content_type" data-override="content-type" id="id__content_type" class="form-control">
+  <option value="application/json" selected="">application/json</option>
+
+  <option value="application/x-www-form-urlencoded">application/x-www-form-urlencoded</option>
+
+  <option value="multipart/form-data">multipart/form-data</option>
+
+</select>
+      <span class="help-block"></span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="id__content" class="col-sm-2 control-label">Content:</label>
+    <div class="col-sm-10">
+      <textarea name="_content" cols="40" rows="10" data-override="content" id="id__content" class="form-control">{
+    "photo": null,
+    "album": null
+}</textarea>
+      <span class="help-block"></span>
+    </div>
+  </div>
+
+
+                            <div class="form-actions">
+                              <button class="btn btn-primary" title="Make a POST request on the Photo List resource">POST</button>
+                            </div>
+                          </fieldset>
+                        </form>
+
+                    </div>
+                  </div>
+                </div>
 			
             <!-- header -->
             <header id="header" class="header">
@@ -71,9 +193,11 @@
         	<main class="main-wrapper-inner" id="container">
             	<div class="container">
                 	<div class="wrapper-inner">
+                        <ul id="photos-list" class="small-block-grid-2 medium-block-grid-3 large-block-grid-3 masonry">
+      </ul>
                     	<!-- details-image -->
                     	<figure class="details-image">
-                        	<img src="/static/images/details-image-1.jpg" alt="" class="img-responsive"/>
+
                         </figure>
                         <!-- details-image -->
                         <!-- content -->
@@ -89,8 +213,6 @@
                             <!-- left -->
                             <!-- right -->
                             <section class="inner-right">
-                            	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat eu nibh ultricies semper. Vivamus porta, felis vitae facilisis sodales, felis est iaculis orci, et ornare sem mauris ut turpis. Pellentesque vitae tortor nec tellus hendrerit aliquam. Donec condimentum leo eu ull pellentesque urna rhoncus.</p>
-                                <p>elis est iaculis orci, et ornare sem mauris ut turpis. Pellentesque vitae tortor nec tellus hendrerit aliquam. Donec condimentum leo eu ullamcorper scelerisque pellentes rhoncus.</p>
                                 <header>
                                     <h2>Camera Used</h2>
                                     <h3>Nikon F56DSLR</h3>
@@ -101,12 +223,10 @@
                         <!-- content -->
                         <!-- details-image -->
                         <figure class="details-image">
-                        	<img src="/static/images/details-image-2.jpg" alt="" class="img-responsive"/>
                         </figure>
                         <!-- details-image -->
                         <!-- details-image -->
                         <figure class="details-image">
-                        	<img src="/static/images/details-image-3.jpg" alt="" class="img-responsive"/>
                         </figure>
                         <!-- details-image -->
                     </div>
@@ -120,7 +240,6 @@
                 <div class="row">
                 	<!-- logo -->
                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                    	<img src="/static/images/footer-logo.png" alt="Picxa" title="Picxa"/>
                     	<p class="copy-right">&copy; Reserved Picxa inc 2016.</p>
                     </div>
                     <!-- logo -->
@@ -153,7 +272,7 @@
             </div>
         </footer>
         <!-- footer -->
-   
+
 
     <!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
@@ -162,7 +281,21 @@
     <script src="/static/js/assets/bootstrap.min.js" type="text/javascript"></script>
 	<script src="/static/js/main.js" type="text/javascript"></script>
 	<script src="/static/js/jquery.nicescroll.min.js" type="text/javascript"></script>	
-	
-	
+	<script>
+
+        var currentLocation = window.location.href;
+        currentLocation=currentLocation.replace("details/?album="+{{ album }},"");
+        console.log(currentLocation);
+    $.getJSON(currentLocation+"photos", function(data) {
+        console.log(data);
+        $.each( data, function( key, value ) {
+            var str=value.photo.replace("/photos/app/albums",""); <!-- Burası localde calistirirken degisebilir-->
+                    console.log(str);
+        if (value.album=={{ album }})
+        $('#photos-list').append("<li class=><figure class='image'><img width=500 height=500 src='" + str + "'/>" + "</figure></li>");
+    });
+    });
+</script>
+
   </body>
 </html>

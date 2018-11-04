@@ -310,8 +310,8 @@
     $.getJSON('albums', function(data) {
         console.log(data);
         $.each( data, function( key, value ) {
-            $("#albums-list").append("<li class='masonry-item grid'><figure class='effect-sarah'><img src='https://static1.squarespace.com/static/59b34421c534a510381370ad/t/5b0d8ef003ce64470a0243fb/1527615223429/pexels-photo-242433.jpeg'  height=\"200\" width=\"200\"/>" +
-                "<figcaption><h2>" + value.title + "</h2><p>Owner: " + value.owner + "</p><p>Created at: " + value.created_at + "</p></figcaption></figure></li>");
+            $("#albums-list").append("<li class='masonry-item grid'> <figure class='effect-sarah'><img src='https://static1.squarespace.com/static/59b34421c534a510381370ad/t/5b0d8ef003ce64470a0243fb/1527615223429/pexels-photo-242433.jpeg'  height=\"200\" width=\"200\"/>" +
+                "<figcaption><h2>" + value.title + "</h2><p>Owner: " + value.owner + "</p><a href=\"details/?album="+value.id+"\"><p>Created at: " + value.created_at + "</p></a></figcaption></figure></li>");
         });
     });
 </script>
