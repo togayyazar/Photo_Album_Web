@@ -18,6 +18,13 @@ class PhotoViewSet(viewsets.ModelViewSet):
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializers
 
+    def get_queryset(self):
+        queryset = Photo.objects.all()
+        album_id = self.request.query_params.get('album', None)
+        if album_id is not None:
+            queryset = queryset.filter(album=album_id)
+        return queryset
+
 
 @csrf_exempt
 def index(request):
