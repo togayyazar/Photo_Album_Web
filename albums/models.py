@@ -3,12 +3,13 @@ from datetime import datetime
 from rest_framework import serializers
 import uuid
 import os
+from photo_album import settings
 
 
 def get_file_path(instance, filename):
     ext = filename.split('.')[-1]
     filename = "%s.%s" % (uuid.uuid4(), ext)
-    return os.path.join('albums/static/images', filename)
+    return os.path.join(settings.BASE_DIR, 'albums/static/images', filename)
 
 
 class Album(models.Model):
