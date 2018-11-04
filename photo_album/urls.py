@@ -21,7 +21,7 @@ from rest_framework.routers import Route, DefaultRouter
 
 router = DefaultRouter(trailing_slash=False)
 router.register(r'albums', view.AlbumViewSet)
-router.register(r'photos/?(?P<album>.+)', view.PhotoViewSet)
+router.register(r'photos?(?P<album>.+)', view.PhotoViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
