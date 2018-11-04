@@ -25,11 +25,11 @@ class PhotoViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(album=album_id)
         return queryset
 
-
 @csrf_exempt
 def index(request):
     return render(request, 'index.html')
 
 
 def details(request):
-    return render(request, 'details.html')
+    album = request.GET.get('album')
+    return render(request, 'details.html', {'album': album})
