@@ -30,7 +30,116 @@
   </head>
   <body>
 
-<div class="tabbable">
+
+            <!-- header -->
+            <header id="header" class="header">
+            	<div class="container-fluid">
+                	<hgroup>
+                    	<!-- logo -->
+                        	<h1>
+                            	<a href="index2.html" title="Picxa"><img src="/static/images/logo.png" alt="Picxa" title="Picxa"/></a>
+                            </h1>
+                        <!-- logo -->
+                        <!-- nav -->
+                        <nav>
+                            <div class="menu-expanded">
+                            	<div class="nav-icon">
+                                	<div id="menu" class="menu"></div>
+                                    <p>menu</p>
+                                </div>
+                                <div class="cross">
+                                    <span class="linee linea1"></span>
+                                    <span class="linee linea2"></span>
+                                    <span class="linee linea3"></span>
+                                </div>
+                                <div class="main-menu">
+                                    <ul>
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="blog.html">blog</a></li>
+                                        <li><a href="contact.html">contact</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                        <!-- nav -->
+                    </hgroup>
+                </div>
+            </header>
+            <!-- header -->
+            <!-- main-wrapper-inner -->
+        	<main class="main-wrapper-inner" id="container">
+            	<div class="container">
+                	<div class="wrapper-inner">
+                        <ul id="photos-list" class="small-block-grid-2 medium-block-grid-3 large-block-grid-3 masonry">
+      </ul>
+                    	<!-- details-image -->
+            <div>
+            <button type="button" class="btn btn-primary waves-effect waves-circle waves-float pull-right" data-toggle="modal" data-target="#AddPhotoCreateModal">Add Photo To Album</button>
+            </div>
+                        <!-- details-image -->
+                        <!-- content -->
+                        <!-- content -->
+                        <!-- details-image -->
+                        <figure class="details-image">
+                        </figure>
+                        <!-- details-image -->
+                        <!-- details-image -->
+                        <figure class="details-image">
+                        </figure>
+                        <!-- details-image -->
+                    </div>
+                </div>
+            </main>
+          <!-- main-wrapper-inner -->
+         <!-- footer -->
+         <footer class="footer">
+            <h3>Stay connected with us</h3>
+            <div class="container footer-bot">
+                <div class="row">
+                	<!-- logo -->
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                    	<p class="copy-right">&copy; Reserved Picxa inc 2016.</p>
+                    </div>
+                    <!-- logo -->
+                    <!-- address -->
+                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 padding-top">
+                    	<address><p>200 Broadway Av</p>
+        <p>West Beach SA 5024  Australia</p></address>
+                    </div>
+                    <!-- address -->
+                    <!-- email -->
+                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 padding-top">
+                            <p><a href="mailto:contact@Picxa.com">contact@Picxa.com</a></p>
+                            <p>01 (2) 34 56 78</p>
+                    </div>
+                    <!-- email -->
+                    <!-- social -->
+                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 padding-top">
+                     	<ul class="social">
+                        	<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-flickr" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-delicious" aria-hidden="true"></i></a></li>
+                        </ul>
+                    	<p class="made-by">Made with by <i class="fa fa-heart" aria-hidden="true"></i> <a href="http://www.designstub.com/" target="_blank">Designstub</a><p>
+                    </div>
+                    <!-- social -->
+                </div>
+            </div>
+        </footer>
+        <!-- footer -->
+>    <div class="modal fade" id="AddPhotoCreateModal" role="dialog" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span>Create Album</span>
+                    </h4>
+                </div
+                    <div class="tabbable">
 
                     <ul class="nav nav-tabs form-switcher">
                       <li class="active">
@@ -87,7 +196,7 @@
   <div class="col-sm-10">
     <select class="form-control" name="album">
 
-            <option value={{ album }} >Album {{ album }}</option>
+            <option value={{ album }}>Album {{ album }}</option>
 
     </select>
 
@@ -152,126 +261,9 @@
                     </div>
                   </div>
                 </div>
-			
-            <!-- header -->
-            <header id="header" class="header">
-            	<div class="container-fluid">
-                	<hgroup>
-                    	<!-- logo -->
-                        	<h1>
-                            	<a href="index2.html" title="Picxa"><img src="/static/images/logo.png" alt="Picxa" title="Picxa"/></a>
-                            </h1>
-                        <!-- logo -->
-                        <!-- nav -->
-                        <nav>
-                            <div class="menu-expanded">
-                            	<div class="nav-icon">
-                                	<div id="menu" class="menu"></div>
-                                    <p>menu</p>
-                                </div>
-                                <div class="cross">
-                                    <span class="linee linea1"></span>
-                                    <span class="linee linea2"></span>
-                                    <span class="linee linea3"></span>
-                                </div>
-                                <div class="main-menu">
-                                    <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="contact.html">contact</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </nav>
-                        <!-- nav -->
-                    </hgroup>
-                </div>
-            </header>
-            <!-- header -->
-            <!-- main-wrapper-inner -->
-        	<main class="main-wrapper-inner" id="container">
-            	<div class="container">
-                	<div class="wrapper-inner">
-                        <ul id="photos-list" class="small-block-grid-2 medium-block-grid-3 large-block-grid-3 masonry">
-      </ul>
-                    	<!-- details-image -->
-                    	<figure class="details-image">
-
-                        </figure>
-                        <!-- details-image -->
-                        <!-- content -->
-                        <div class="details-content">
-                        	<!-- left -->
-                        	<section class="inner-left">
-                            	<header>
-                                	<h3>Photo Caption</h3>
-                                    <h4>Client</h4>
-                                    <h5>Metrix Outdoor</h5>
-                                </header>
-                            </section>
-                            <!-- left -->
-                            <!-- right -->
-                            <section class="inner-right">
-                                <header>
-                                    <h2>Camera Used</h2>
-                                    <h3>Nikon F56DSLR</h3>
-                                </header>
-                            </section>
-                            <!-- right -->
-                        </div>
-                        <!-- content -->
-                        <!-- details-image -->
-                        <figure class="details-image">
-                        </figure>
-                        <!-- details-image -->
-                        <!-- details-image -->
-                        <figure class="details-image">
-                        </figure>
-                        <!-- details-image -->
-                    </div>
-                </div>
-            </main>
-          <!-- main-wrapper-inner -->
-         <!-- footer -->
-         <footer class="footer">
-            <h3>Stay connected with us</h3>
-            <div class="container footer-bot">
-                <div class="row">
-                	<!-- logo -->
-                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                    	<p class="copy-right">&copy; Reserved Picxa inc 2016.</p>
-                    </div>
-                    <!-- logo -->
-                    <!-- address -->
-                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 padding-top">
-                    	<address><p>200 Broadway Av</p>
-        <p>West Beach SA 5024  Australia</p></address>
-                    </div>
-                    <!-- address -->
-                    <!-- email -->
-                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 padding-top">
-                            <p><a href="mailto:contact@Picxa.com">contact@Picxa.com</a></p>
-                            <p>01 (2) 34 56 78</p>
-                    </div>
-                    <!-- email -->
-                    <!-- social -->
-                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 padding-top">
-                     	<ul class="social">
-                        	<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-flickr" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-delicious" aria-hidden="true"></i></a></li>
-                        </ul>
-                    	<p class="made-by">Made with by <i class="fa fa-heart" aria-hidden="true"></i> <a href="http://www.designstub.com/" target="_blank">Designstub</a><p>
-                    </div>
-                    <!-- social -->
-                </div>
             </div>
-        </footer>
-        <!-- footer -->
+        </div>
+    </div>
 
 
     <!-- jQuery -->
@@ -292,10 +284,11 @@
             var str=value.photo.replace("/photos/app/albums",""); <!-- Burası localde calistirirken degisebilir-->
                     console.log(str);
         if (value.album=={{ album }})
-        $('#photos-list').append("<li class=><figure class='image'><img width=500 height=500 src='" + str + "'/>" + "</figure></li>");
+        $('#photos-list').append("<li  <figure class='image'><img  src='" + str + "'/>" + "</figure></li>");
     });
     });
 </script>
 
+  
   </body>
 </html>
