@@ -19,9 +19,9 @@ from django.urls import include, path
 from albums import views as view
 from rest_framework.routers import Route, DefaultRouter
 
-router = DefaultRouter(trailing_slash=False)
+router = DefaultRouter()
 router.register(r'albums', view.AlbumViewSet)
-router.register(r'photos?(?P<album>.+)', view.PhotoViewSet)
+router.register(r'photos', view.PhotoViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
