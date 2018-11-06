@@ -22,6 +22,7 @@ class Photo(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE, blank=False)
     photo = models.ImageField(upload_to=get_file_path)
     uploaded_at = models.DateTimeField(auto_now_add=True)
+    keyword = models.CharField(max_length=20, blank=True)
 
 
 class PhotoSerializers(serializers.ModelSerializer):
