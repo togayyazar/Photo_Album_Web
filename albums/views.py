@@ -4,8 +4,6 @@ from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 from .models import *
 from django.http import HttpResponseRedirect
-from django.contrib.auth.models import User
-from rest_framework import permissions
 from .permissions import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
@@ -51,7 +49,6 @@ class PhotoViewSet(viewsets.ModelViewSet):
                 queryset = queryset.filter(album=album_id)
             return queryset
         return None
-
 
     def update(self, request, *args, **kwargs):
         print(request.data)
@@ -99,3 +96,16 @@ def details(request):
         context['album_name'] = album_name
 
     return render(request, 'details.html', context)
+
+
+def shared_photo(request):
+    file_name = request.GET.get('file_name')
+    type = request.GET.get('type')
+    photo_id = Photo.objects.get(photo__icontains=file_name).id
+
+    context = {
+        'photo_url': file_name + "." + type,
+        'photo_id': photo_id
+    }
+
+    return render(request, 'shared-photo.html', context)

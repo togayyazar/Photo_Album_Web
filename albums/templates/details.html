@@ -118,7 +118,7 @@
     </div>
 </footer>
 <!-- footer -->
->    <div class="modal fade" id="AddPhotoCreateModal" role="dialog" >
+    <div class="modal fade" id="AddPhotoCreateModal" role="dialog" >
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -194,8 +194,26 @@
         </div>
     </div>
 </div>
-</div>
 
+<div class="modal fade" id="mdl-share-photo" role="dialog" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <span>Fotoğrafı Paylaş</span>
+                </h4>
+            </div>
+            <div class="tabbable">
+                <div class="well tab-content">
+                    <div class="tab-pane-active" id="put-generic-content-form-tag">
+                        <a href="#" id="photo-url">URL</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
@@ -210,13 +228,11 @@
     currentLocation=currentLocation.replace("details/?album="+{{ album }},"");
     $.getJSON(currentLocation+"photos", function(data) {
         $.each( data, function( key, value ) {
-            var str = value.photo.replace("/photo_album", ""); <!-- Burası localde calistirirken degisebilir-->
-            str = str.replace("/photos", "");
-            str = str.replace("/app", "");
-            str = str.replace("/albums", "");
+            var str = value.photo.split("/static/images/")[1];
             if (value.album=={{ album }})
-                $('#photos-list').append("<li  <figure class='image'><img  src='" + str + "'/>" + "</figure>" +
-                    "<a href=\"#\" data-photo-id='"+value.id+"' data-toggle=\"modal\" data-target=\"#mdl-tag-photo\">Mevcut Etiket: #" + value.keyword + " (Etiket Değiştir)</a></li>");
+                $('#photos-list').append("<li><figure class='image'><img  src=/static/images/" + str + "></figure>"
+                    + "<a href=\"#\" data-photo-id='"+value.id+"' data-toggle=\"modal\" data-target=\"#mdl-tag-photo\">Mevcut Etiket: #" + value.keyword + " (Etiket Değiştir)</a>"
+                    + "<span style='display:block;'><a href=\"#\" data-photo-url='"+value.photo+"' data-toggle=\"modal\" data-target=\"#mdl-share-photo\">Paylaş</a></span></li>");
         });
     });
 </script>
@@ -240,6 +256,16 @@
     $('#mdl-tag-photo').on('show.bs.modal', function(e) {
         var photoId = $(e.relatedTarget).data('photo-id');
         $("#form-tag").attr('action', '/photos/'+photoId+'/');
+    });
+
+    $('#mdl-share-photo').on('show.bs.modal', function(e) {
+        var photoUrl = $(e.relatedTarget).data('photo-url').split("/static/images/")[1].split(".");
+        var fileName = photoUrl[0];
+        var fileType = photoUrl[1];
+        var baseUrl = window.location.host;
+        var sharedUrl = "" + baseUrl + "/shared?file_name=" + fileName + "&type=" + fileType;
+        $("#photo-url").text(sharedUrl);
+        $("#photo-url").attr('href', "/shared?file_name=" + fileName + "&type=" + fileType);
     });
 
     $(function () {

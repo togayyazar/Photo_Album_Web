@@ -16,7 +16,6 @@ def get_file_path(instance, filename):
 
 class Album(models.Model):
     title = models.CharField(max_length=50, blank=False)
-    #owner = models.CharField(max_length=50, blank=False)
     user = models.ForeignKey(User, related_name='albums', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -29,11 +28,6 @@ class Photo(models.Model):
     photo = models.ImageField(upload_to=get_file_path)
     uploaded_at = models.DateTimeField(auto_now_add=True)
     keyword = models.CharField(max_length=20, blank=True)
-
-
-class Photo2SharedUser(models.Model):
-    photo = models.ForeignKey(Photo, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class AlbumSerializer(serializers.ModelSerializer):
@@ -53,3 +47,4 @@ class PhotoSerializers(serializers.ModelSerializer):
     class Meta:
             model = Photo
             fields = '__all__'
+
