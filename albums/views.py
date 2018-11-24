@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from .permissions import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
 
 
 class AlbumViewSet(viewsets.ModelViewSet):
@@ -61,10 +62,8 @@ class PhotoViewSet(viewsets.ModelViewSet):
 
 
 @csrf_exempt
+@login_required(login_url='/login/')
 def index(request):
-    if not request.user.is_authenticated:
-        return redirect('/login')
-
     return render(request, 'index.html')
 
 
@@ -84,6 +83,7 @@ def signup(request):
 
 
 @csrf_exempt
+@login_required(login_url='/login/')
 def details(request):
     album_id = request.GET.get('album')
     context = {
@@ -98,6 +98,7 @@ def details(request):
     return render(request, 'details.html', context)
 
 
+@login_required(login_url='/login/')
 def shared_photo(request):
     file_name = request.GET.get('file_name')
     type = request.GET.get('type')
