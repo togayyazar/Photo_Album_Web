@@ -1,23 +1,40 @@
-from django.shortcuts import render
-from rest_framework import viewsets
+from django.shortcuts import render, redirect
+from rest_framework import viewsets, generics
 from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
-from .models import Album, AlbumSerializer, Photo, PhotoSerializers
+from .models import *
 from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
+from rest_framework import permissions
+from .permissions import *
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, authenticate
 
 
 class AlbumViewSet(viewsets.ModelViewSet):
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+                          IsOwnerOrReadOnly)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
     def create(self, request, *args, **kwargs):
         response = super(AlbumViewSet, self).create(request, *args, **kwargs)
         return HttpResponseRedirect(redirect_to='/')
 
+    def get_queryset(self, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return Album.objects.all().filter(user=self.request.user)
+        return None
+
 
 class PhotoViewSet(viewsets.ModelViewSet):
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializers
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+                          IsOwnerOrReadOnlyPhoto,)
 
     def create(self, request, *args, **kwargs):
         response = super(PhotoViewSet, self).create(request, *args, **kwargs)
@@ -27,15 +44,19 @@ class PhotoViewSet(viewsets.ModelViewSet):
             return response
 
     def get_queryset(self):
-        queryset = Photo.objects.all()
-        album_id = self.request.query_params.get('album', None)
-        if album_id is not None:
-            queryset = queryset.filter(album=album_id)
-        return queryset
+        if self.request.user.is_authenticated:
+            queryset = Photo.objects.filter(album__user=self.request.user)
+            album_id = self.request.query_params.get('album', None)
+            if album_id is not None:
+                queryset = queryset.filter(album=album_id)
+            return queryset
+        return None
+
 
     def update(self, request, *args, **kwargs):
+        print(request.data)
         instance = self.get_object()
-        serializer = PhotoSerializers(instance, data={'keyword': request.data['keyword']}, partial=True)
+        serializer = PhotoSerializers(instance, data={'keyword': request.data['keyword']}, context={'request': request}, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save(**serializer.validated_data)
         response = Response(serializer.validated_data)
@@ -44,7 +65,25 @@ class PhotoViewSet(viewsets.ModelViewSet):
 
 @csrf_exempt
 def index(request):
+    if not request.user.is_authenticated:
+        return redirect('/login')
+
     return render(request, 'index.html')
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('/')
+    else:
+        form = UserCreationForm()
+    return render(request, 'registration/signup.html', {'form': form})
 
 
 @csrf_exempt

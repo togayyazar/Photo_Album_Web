@@ -129,7 +129,7 @@
             <div class="tabbable">
                 <div class="well tab-content">
                     <div class="tab-pane active" id="post-object-form">
-                        <form action="/photos/" method="POST" enctype="multipart/form-data" class="form-horizontal" novalidate="">
+                        <form action="/photos/" method="POST" enctype="multipart/form-data" class="form-horizontal" novalidate=""> {% csrf_token %}
                             <fieldset>
                                 <div class="form-group ">
                                     <label class="col-sm-2 control-label ">
@@ -172,7 +172,7 @@
             <div class="tabbable">
                 <div class="well tab-content">
                     <div class="tab-pane-active" id="put-generic-content-form-tag">
-                        <form id="form-tag" action="#" data-method="PATCH" class="form-horizontal">
+                        <form id="form-tag" action="#" data-method="PATCH" class="form-horizontal"> {% csrf_token %}
                             <fieldset>
                                 <div class="form-group ">
                                     <label class="col-sm-2 control-label ">

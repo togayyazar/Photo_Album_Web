@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import include, path
 from albums import views as view
 from rest_framework.routers import Route, DefaultRouter
+from django.contrib.auth import views as auth_views
 
 router = DefaultRouter()
 router.register(r'albums', view.AlbumViewSet)
@@ -27,6 +28,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', view.index),
     path('details/', view.details),
+    path('api-auth/', include('rest_framework.urls')),
+    path('signup/', view.signup, name='signup'),
+    path('login/', auth_views.login, name='login'),
+    path('logout/', auth_views.logout, name='logout'),
 ]
 
 urlpatterns=urlpatterns+router.urls
